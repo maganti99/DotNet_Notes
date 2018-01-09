@@ -1,0 +1,54 @@
+MVC Projects things learnt :
+- Custom Model binders can be created by creating a class which implements IModelBinder interface and registring this class via ModelBinders.Binders method (add to ModelBinderDictionary)
+   in Global.asax.
+  These modelbinders will be executed for every post request. 
+- When an object of class (having a collection), is placed in Session variable and new values added to the collection of the object after, Session variable will gets these updates
+
+
+
+
+Base and Derived classes
+========================
+
+- When Class (Derived) inherits from base class
+   - when object is made of derived class, base class constuctor is executed first followed by derived class constructor
+   - if base class has multiple constructors, derived class can choose which constructor needs to be executed by using base keyword on derived class constructor
+     public FullTime_Employee() : base("Nagesh")
+            {
+                
+                Console.WriteLine("Derived Class Constructor");
+            }
+   - A base class method can be invoked from derived class methode using base.method_name()
+         public void Test()
+            {
+                base.Print("From Test");
+             
+            }
+    - An object reference of base class can pe pointed to object of dervived class
+           baseClass bc = new derivedClass()
+      In this case, baseClass refrence (bc) can access all members (properties, methods) of base class only, althoug the object (derived class) may have more members 
+      In order for baseClass refrence (bc) to access all the members of derived class, it needs to be type casted to derived class. 
+                ((derivedClass)bc).new_method()
+
+
+Order of execution of methods depending on the attributes used.
+For web applications we can have specific methods of class to get executed before Application_Start runs using attributes
+
+- System.Web.PreApplicationStartMethodAttribute
+- WebActivatorEx.PreApplicationStartMethodAttribute
+  Ex: [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(OnlineShoppingStore.WebUI.App_Start.NinjectWebCommon), "Start")]
+- Global.asax (Application_Start method)
+- OwinStartupAttribute
+
+
+Types of dependency injections :
+==============================
+- Construtor injection
+- Method Injection
+- Property injection
+
+
+Frameworks
+- Unity Framework
+
+
